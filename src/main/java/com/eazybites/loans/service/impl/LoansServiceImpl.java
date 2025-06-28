@@ -53,6 +53,8 @@ public class LoansServiceImpl implements ILoansService {
     public void updateLoan(LoansUpdateRequestDto dto) {
         Loans loan = loansRepository.findByMobileNumber(dto.getMobileNumber()).orElseThrow(() -> new ResourceNotFoundException("Loans","mobileNumber", dto.getMobileNumber()));
         loansMapper.updateLoansFromDto(dto, loan);
+        loan.setAmountPaid(loan.getAmountPaid() + dto.getAmountToPay());
+        loan.setOutstandingAmount(loan.getTotalLoan() - loan.getAmountPaid());
         loansRepository.save(loan);
     }
 

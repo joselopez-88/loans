@@ -20,7 +20,7 @@ public class LoansUpdateRequestDto {
     @Positive(message = " The total loan amount must be greater than 0.")
     private int totalLoan;
     @PositiveOrZero(message = " The amount paid must be greater than or equal to 0.")
-    private int amountPaid;
-    @PositiveOrZero(message = " The outstanding amount must be greater than or equal to 0.")
-    private int outstandingAmount;
+    private int amountToPay;
+    // @PositiveOrZero(message = " The outstanding amount must be greater than or equal to 0.")
+    // private int outstandingAmount;
 }
