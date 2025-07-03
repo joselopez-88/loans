@@ -19,13 +19,11 @@ Dentro del plugin spring-boot-maven-plugin definir el nombre de la
 imagen a crear con el tag image
 ```xml
 <configuration>
-					<image>
-						<name>albertoesteva88/${project.artifactId}:s4</name>
+	<image>
+		<name>albertoesteva88/${project.artifactId}:s4</name>
 
-					</image>
-                    .
-                    .
-                    .
+	</image>
+    
 <configuration>
 ```
 
