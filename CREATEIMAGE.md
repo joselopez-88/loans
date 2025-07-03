@@ -17,6 +17,7 @@ exponiendo el puerto `8080` en Spring Boot 2.3+.
 ## 🛠️ Paso 1: Definir el nombre de la imagen a crear
 Dentro del plugin spring-boot-maven-plugin definir el nombre de la 
 imagen a crear con el tag image
+```xml
 <configuration>
 					<image>
 						<name>albertoesteva88/${project.artifactId}:s4</name>
@@ -26,7 +27,7 @@ imagen a crear con el tag image
                     .
                     .
 <configuration>
-
+```
 
 --
 ## 🔨 Paso 2: Construir la imagen Docker
