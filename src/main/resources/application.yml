@@ -16,20 +16,10 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  config:
-    import:
-    - "application_qa.yml"
-    - "application_prod.yml"
   profiles:
     active:
     - "qa"    
-build:
-  version: "3.0"
-loans:
-  message: "Welcome to EazyBank Loans Development environment"
-  contactDetails:
-    name: "Carlos Rivera - Dev Lead"
-    email: "carlos.rivera@eazybank.dev"
-  onCallSupport:
-    - "(123)456-7890"
-    - "(987)654-3210"        
+  config:
+    import:
+    - "optional:configserver:http://localhost:8071/"
+       
