@@ -122,7 +122,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
 					<image>
-						<name>albertoesteva88/${project.artifactId}:s4</name>
+						<name>albertoesteva88/${project.artifactId}:s7</name>
 
 					</image>
                     <excludes>
