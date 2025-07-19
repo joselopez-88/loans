@@ -20,6 +20,8 @@ public interface LoansMapper {
     // Loans mapToLoans(LoansResponseDto loansResponseDto);
 
     @Mapping(target = "loanId", ignore = true)
+    @Mapping(target = "amountPaid", ignore = true)
+    @Mapping(target = "outstandingAmount", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
