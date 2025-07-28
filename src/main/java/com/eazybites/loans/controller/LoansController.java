@@ -20,7 +20,6 @@ import com.eazybites.loans.model.dto.LoansContactInfoDto;
 import com.eazybites.loans.model.dto.request.LoansUpdateRequestDto;
 import com.eazybites.loans.model.dto.response.LoansResponseDto;
 import com.eazybites.loans.model.dto.response.ResponseDto;
-import com.eazybites.loans.model.entity.Loans;
 import com.eazybites.loans.service.ILoansService;
 
 import io.swagger.v3.oas.annotations.Operation;
