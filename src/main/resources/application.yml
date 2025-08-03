@@ -29,6 +29,7 @@ management:
         include:
         - health
         - info
+        - shutdown
 ## permite acceder al endpoint /actuator/shutdown desde cualquier origen sin autenticación
   endpoint:
     shutdown:
