@@ -58,3 +58,9 @@ info:
     name: "loans"
     description: "EazyBank Loans Application"
     version: "1.0.0"
+#Estableciendo la configuracion de logging DEBUG en el paquete com.eazybites.loans del proyecto
+logging:
+  level:
+    com:
+      eazybites:
+        loans: DEBUG

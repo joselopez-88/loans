@@ -1,5 +1,7 @@
 package com.eazybites.loans.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +37,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class LoansController {
 
+    private static final Logger logger = LoggerFactory.getLogger(LoansController.class);
+
     private final ILoansService loansService;
 
     @Value("${build.version}")
@@ -46,11 +51,18 @@ public class LoansController {
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createLoan(@RequestParam @Pattern(regexp = "(^[0-9]{10}$)", message = " The mobile number must be 10 digits.") String mobileNumber) {
         loansService.createLoan(mobileNumber);
-        return ResponseEntity.ok(new ResponseDto(HttpStatus.CREATED.getReasonPhrase(), HttpStatus.CREATED.value(), LoansConstants.MESSAGE_201));
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(
+                        new ResponseDto(HttpStatus.CREATED.getReasonPhrase(), HttpStatus.CREATED.value(),
+                                LoansConstants.MESSAGE_201));
     }
 
     @GetMapping("/fetch")
-    public ResponseEntity<LoansResponseDto> fetchLoan(@RequestParam @Pattern(regexp = "(^[0-9]{10}$)", message = " The mobile number must be 10 digits.") String mobileNumber) {
+    public ResponseEntity<LoansResponseDto> fetchLoan(
+            @RequestHeader(name = "eazyBank-correlation-id") String correlationId,    
+            @RequestParam @Pattern(regexp = "(^[0-9]{10}$)", message = " The mobile number must be 10 digits.") String mobileNumber) {
+        logger.debug("eazyBank-correlation-id found: {}", correlationId);
         return ResponseEntity.ok(loansService.fetchLoan(mobileNumber));
     }
 
