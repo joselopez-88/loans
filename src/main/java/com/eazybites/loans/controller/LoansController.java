@@ -62,8 +62,10 @@ public class LoansController {
     public ResponseEntity<LoansResponseDto> fetchLoan(
             @RequestHeader(name = "eazyBank-correlation-id") String correlationId,    
             @RequestParam @Pattern(regexp = "(^[0-9]{10}$)", message = " The mobile number must be 10 digits.") String mobileNumber) {
-        logger.debug("eazyBank-correlation-id found: {}", correlationId);
-        return ResponseEntity.ok(loansService.fetchLoan(mobileNumber));
+        logger.debug("fetchLoan method Started");
+        LoansResponseDto loansResponseDto = loansService.fetchLoan(mobileNumber);
+        logger.debug("fetchLoan method Ended");
+        return ResponseEntity.ok(loansResponseDto);
     }
 
     @PatchMapping("/update")
